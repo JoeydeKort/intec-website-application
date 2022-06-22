@@ -1,0 +1,15 @@
+server.port: 8888
+
+spring.cloud.config:
+    discovery.enabled: false
+    fail-fast: false
+
+eureka.client:
+    registerWithEureka: false
+    fetchRegistry: false
+
+hazelcast.max.no.heartbeat.seconds: 60
+
+admin.url: http://admin:8080/ui/
+
+news.url: http://news:8080/ui/
