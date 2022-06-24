@@ -15,8 +15,8 @@ public class WebsiteView extends SplitLayout {
         configuration.setDialogText("Please wait...");
         configuration.setReconnectInterval(1000);
 
-        String adminUrl = environment.getProperty("admin-application.url");
-        String newsUrl = environment.getProperty("admin-application.url");
+        String adminUrl = environment.getProperty("admin.url");
+        String newsUrl = environment.getProperty("news.url");
         int uiSplitPosition = environment.getProperty("ui.split.position", Integer.class, 30);
 
         addToPrimary(new IFrame(adminUrl));
