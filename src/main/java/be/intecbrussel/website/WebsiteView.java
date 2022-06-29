@@ -4,25 +4,26 @@ import com.vaadin.flow.component.ReconnectDialogConfiguration;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.splitlayout.SplitLayout;
 import com.vaadin.flow.router.Route;
-import org.springframework.core.env.Environment;
-
 
 @Route("")
 public class WebsiteView extends SplitLayout {
 
-    public WebsiteView(Environment environment) {
+    private String adminUrl = "http://localhost:8083/ui/";
+
+    private String newsUrl = "http://localhost:8084/ui/";
+
+    private Integer uiSplitPosition = 30;
+
+    public WebsiteView() {
         ReconnectDialogConfiguration configuration = UI.getCurrent().getReconnectDialogConfiguration();
         configuration.setDialogText("Please wait...");
         configuration.setReconnectInterval(1000);
-
-        String adminUrl = environment.getProperty("admin.url");
-        String newsUrl = environment.getProperty("news.url");
-        int uiSplitPosition = environment.getProperty("ui.split.position", Integer.class, 30);
 
         addToPrimary(new IFrame(adminUrl));
         addToSecondary(new IFrame(newsUrl));
         setSplitterPosition(uiSplitPosition);
         setSizeFull();
+
     }
 
 }
